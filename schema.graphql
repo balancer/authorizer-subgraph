@@ -1,13 +1,10 @@
-type Token @entity {
+type Action @entity {
   id: ID!
-  decimals: Int
-  name: String
-  symbol: String
+  permissions: [Permission!]! @derivedFrom(field: "action")
 }
 
-type Transfer @entity {
+type Permission @entity {
   id: ID!
-  from: String!
-  to: String!
-  value: BigInt!
+  account: Bytes!
+  action: Action!
 }

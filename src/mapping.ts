@@ -1,14 +1,11 @@
-import { Transfer } from './types/schema';
-import { Transfer as TransferEvent } from './types/erc20/erc20';
-import { addToken } from './utils/tokens';
+import { RoleGranted, RoleRevoked } from './types/authorizer/authorizer';
+import { addAction, addPermission, removePermission } from './utils/actions';
 
-export function handleTransfer(event: TransferEvent): void {
-  addToken(event.address.toHex());
+export function handleRoleGranted(event: RoleGranted): void {
+  addAction(event.params.role);
+  addPermission(event.params.role, event.params.account);
+}
 
-  let transactionHash = event.transaction.hash.toHex();
-  let transfer = new Transfer(transactionHash);
-  transfer.from = event.params.from.toHex();
-  transfer.to = event.params.to.toHex();
-  transfer.value = event.params.value;
-  transfer.save();
+export function handleRoleRevoked(event: RoleRevoked): void {
+  removePermission(event.params.role, event.params.account);
 }
