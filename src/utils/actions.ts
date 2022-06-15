@@ -12,11 +12,7 @@ export function addAction(actionId: Bytes): void {
   action.save();
 }
 
-export function addPermission(
-  actionId: Bytes,
-  account: Bytes,
-  txHash: Bytes,
-): void {
+export function addPermission(actionId: Bytes, account: Bytes, txHash: Bytes): void {
   const permissionId = crypto.keccak256(actionId.concat(account)).toHexString();
 
   // Permissions are unique so we don't worry about collisions
