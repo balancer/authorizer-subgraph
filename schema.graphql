@@ -7,4 +7,5 @@ type Permission @entity {
   id: ID!
   account: Bytes!
   action: Action!
+  txHash: Bytes!
 }
