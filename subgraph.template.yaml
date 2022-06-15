@@ -1,6 +1,6 @@
 specVersion: 0.0.2
-description: Subgraph Template
-repository: https://github.com/TomAFrench/subgraph-template
+description: Tracks permissions granted on the Balancer Authorizer.
+repository: https://github.com/balancer-labs/authorizer-subgraph
 schema:
   file: ./schema.graphql
 dataSources:

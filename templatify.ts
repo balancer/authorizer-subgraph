@@ -13,9 +13,9 @@ Handlebars.registerHelper('lowercase', function (str) {
 
 function getNetworkNameForSubgraph(): string | null {
   switch (process.env.SUBGRAPH) {
-    case 'ORGANISATION/SUBGRAPH':
+    case 'balancer-labs/balancer-authorizer':
       return 'mainnet';
-    case 'ORGANISATION/SUBGRAPH-GOERLI':
+    case 'balancer-labs/balancer-authorizer-goerli':
       return 'goerli';
     default:
       return null;

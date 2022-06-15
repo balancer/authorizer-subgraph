@@ -1,21 +1,21 @@
 {
-  "name": "@tomfrench/subgraph-template",
+  "name": "@balancer-labs/authorizer-subgraph",
   "version": "1.0.0",
   "description": "Template for subgraph development boilerplate",
   "scripts": {
-    "auth": "graph auth https://api.thegraph.com/deploy/",
+    "auth": "graph auth --product 'hosted-service'",
     "lint": "eslint ./src",
-    "local:create": "graph create --node http://localhost:8020/ ORGANISATION/SUBGRAPH",
-    "local:remove": "graph remove --node http://localhost:8020/ ORGANISATION/SUBGRAPH",
-    "local:deploy": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 ORGANISATION/SUBGRAPH",
+    "local:create": "graph create --node http://localhost:8020/ balancer-labs/balancer-authorizer",
+    "local:remove": "graph remove --node http://localhost:8020/ balancer-labs/balancer-authorizer",
+    "local:deploy": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 balancer-labs/balancer-authorizer",
     "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/",
-    "deploy:mainnet": "yarn deploy ORGANISATION/SUBGRAPH",
+    "deploy:mainnet": "yarn deploy balancer-labs/balancer-authorizer",
     "codegen": "yarn generate-manifests && graph codegen --output-dir src/types/",
     "generate-manifests": "ts-node ./scripts/generate-manifests"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TomAFrench/subgraph-template.git"
+    "url": "git+https://github.com/balancer-labs/authorizer-subgraph.git"
   },
   "contributors": [
     {
@@ -23,15 +23,15 @@
       "url": "https://github.com/tomafrench"
     },
     {
-      "name": "Dylan Golow",
-      "url": "https://github.com/dylangolow"
+      "name": "Nico Venturo",
+      "url": "https://github.com/nventuro"
     }
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/TomAFrench/subgraph-template/issues"
+    "url": "https://github.com/balancer-labs/authorizer-subgraph/issues"
   },
-  "homepage": "https://github.com/TomAFrench/subgraph-template#readme",
+  "homepage": "https://github.com/balancer-labs/authorizer-subgraph#readme",
   "dependencies": {
     "@graphprotocol/graph-ts": "^0.27.0"
   },
