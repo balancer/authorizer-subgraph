@@ -1,12 +1,12 @@
-import { Bytes, crypto, store } from '@graphprotocol/graph-ts';
+import { ByteArray, Bytes, crypto, store } from '@graphprotocol/graph-ts';
 import { Action, Permission } from '../types/schema';
 import { EVERYWHERE } from './constants';
 
-function getPermissionId(actionId: Bytes, account: Bytes): Bytes {
+function getPermissionId(actionId: Bytes, account: Bytes): ByteArray {
   // To guarantee uniqueness, we copy the definition of permission IDs as used in the TimelockAuthorizer contract.
   // https://github.com/balancer-labs/balancer-v2-monorepo/blob/e7cf9d269f520882782627012e936e93563ece5c/pkg/vault/contracts/authorizer/TimelockAuthorizer.sol#L236-L242
   // TODO: Support `where`'s other than `EVERYWHERE`.
-  return crypto.keccak256(actionId.concat(account).concat(EVERYWHERE));
+  return crypto.keccak256(ByteArray.fromHexString(actionId.concat(account).concat(EVERYWHERE).toHexString()));
 }
 
 export function addAction(actionId: Bytes): void {
