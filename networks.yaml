@@ -3,3 +3,8 @@ mainnet:
   authorizer:
     address: '0xa331d84ec860bf466b4cdccfb4ac09a1b43f3ae6'
     startBlock: 12272122
+goerli:
+  network: goerli
+  authorizer:
+    address: '0xa331d84ec860bf466b4cdccfb4ac09a1b43f3ae6'
+    startBlock: 4648094

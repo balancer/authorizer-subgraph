@@ -1,0 +1,30 @@
+specVersion: 0.0.2
+description: Tracks permissions granted on the Balancer Authorizer.
+repository: https://github.com/balancer-labs/authorizer-subgraph
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: authorizer
+    network: 'goerli'
+    source:
+      address: '0xa331d84ec860bf466b4cdccfb4ac09a1b43f3ae6'
+      abi: authorizer
+      # prettier-ignore
+      startBlock: 4648094
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      abis:
+        - name: authorizer
+          file: ./abis/Authorizer.json
+      entities:
+        - Action
+        - Permission
+      eventHandlers:
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+      file: ./src/mapping.ts
